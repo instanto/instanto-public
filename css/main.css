@@ -114,6 +114,10 @@ hr {
     top: -8px;
 }
 
+#main-navbar-collapse .dropdown-menu {
+    margin-top: 0;
+}
+
 .secondary-navbar {
     min-height: 48px !important;
 }

@@ -14,15 +14,15 @@ angular.module('InstantoClient')
         })
 
         .state('projects', {
-            url: '/projects',
+            url: '/projects/financed',
             templateUrl: 'core/projects/projects-view.html',
             controller: 'ProjectsCtrl'
         })
 
-        .state('project-detail', {
-            url: '/projects/{title:string}',
-            templateUrl: 'core/projects/projects-view.html',
-            controller: 'ProjectsCtrl'
+        .state('student-works', {
+            url: '/projects/student_works',
+            templateUrl: 'core/projects/student-works-view.html',
+            controller: 'StudentWorksCtrl'
         })
 
         .state('members', {
