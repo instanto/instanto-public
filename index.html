@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" ng-app="UranusClient">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Uranus</title>
+
+    <!-- Vendor styles -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/bootswatch-paper.min.css" />
+
+    <!-- Uranus' styles -->
+    <link type="text/css" rel="stylesheet" href="css/main.css" />
+
+</head>
+<body ng-controller="MainCtrl">
+
+    <nav ng-controller="MainNavbarCtrl" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid top-navbar-inner">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ui-sref="welcome">
+                    <img ng-src="img/{{ appDetails.imageName }}" alt="Web logo" id="nav-logo">
+                </a>
+                <a class="navbar-brand" ui-sref="welcome">{{ appDetails.name }}</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="main-navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-repeat="route in mainNavRoutes"
+                        ng-class="{ active: routeContains(route.state) }">
+                        <a ui-sref="{{ route.state }}">{{ route.state | capitalize }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div ui-view></div>
+
+<!-- Vendor scripts -->
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
+<script type="text/javascript" src="js/angular-ui-router.min.js"></script>
+
+<!-- Uranus' scripts -->
+<script type="text/javascript" src="core/main.js"></script>
+<script type="text/javascript" src="core/routes.js"></script>
+<script type="text/javascript" src="core/filters.js"></script>
+
+<script type="text/javascript" src="core/welcome/WelcomeCtrl.js"></script>
+
+<script type="text/javascript" src="core/projects/ProjectsSrv.js"></script>
+<script type="text/javascript" src="core/projects/ProjectsCtrl.js"></script>
+
+<script type="text/javascript" src="core/members/MembersSrv.js"></script>
+<script type="text/javascript" src="core/members/MembersCtrl.js"></script>
+<script type="text/javascript" src="core/members/MemberDetailCtrl.js"></script>
+<script type="text/javascript" src="core/members/PartnersSrv.js"></script>
+<script type="text/javascript" src="core/members/PartnerDetailCtrl.js"></script>
+
+<script type="text/javascript" src="core/research/ResearchCtrl.js"></script>
+<script type="text/javascript" src="core/research/ResearchLineSrv.js"></script>
+<script type="text/javascript" src="core/research/ResearchDetailCtrl.js"></script>
+
+<script type="text/javascript" src="core/statuses/StatusesSrv.js"></script>
+
+<script type="text/javascript" src="core/publications/PublicationsSrv.js"></script>
+<script type="text/javascript" src="core/publications/PublicationsCtrl.js"></script>
+<script type="text/javascript" src="core/publications/PublisherSrv.js"></script>
+
+<script type="text/javascript" src="core/press/PressCtrl.js"></script>
+<script type="text/javascript" src="core/press/NewspaperSrv.js"></script>
+
+</body>
+</html>

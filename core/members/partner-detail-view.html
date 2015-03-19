@@ -1,0 +1,62 @@
+<div class="public-page-wrapper">
+
+    <header>
+        <h3 class="member-detail-name">{{ partner.name }}</h3>
+        <input class="form-control member-detail-search" ng-model="searchTxt" placeholder="Search" type="text">
+    </header>
+
+    <hr class="member-detail-sep">
+
+    <aside class="item-common profile-sidebar partner-sidebar">
+        <div class="member-detail-photo partner-detail-photo"
+             style="{{ partner.logo ? 'background-image: url(' + partner.logo + ')' : '' }}"
+             ng-click="toggleZoomPhoto()"></div>
+        <div class="member-detail-photo-zoom"
+             ng-show="zoomPhotoOn"
+             ng-click="toggleZoomPhoto()"><img src="{{ partner.logo }}"></div>
+
+        <ul class="default-list">
+            <li class="profile-prop partner-profile-prop">
+                <label>Web:</label>
+                <a ng-href="{{ partner.webLink }}" target="_blank">{{ partner.webDisplay }}</a>
+            </li>
+            <li class="profile-prop partner-profile-prop">
+                <label>Scope:</label>
+                <span>{{ partner.scope }}</span>
+            </li>
+            <li class="profile-prop partner-profile-prop">
+                <label><abbr title="Department">Dept.</abbr>:</label>
+                <span>{{ partner.same_department ? 'Same' : 'Different' }}</span>
+            </li>
+        </ul>
+    </aside>
+    
+    <main>
+        <section class="item-common profile-section" ng-hide="!researchLines.length">
+            <h4 class="profile-section-title">Research lines</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredResearchLines.length">No results.</em>
+                <ul>
+                    <li ng-repeat="researchLine in (filteredResearchLines = (researchLines | filter : searchTxt))">
+                        {{ researchLine.title + '. ' + researchLine.description }} <em class="publication-role">{{ researchLine.finished ? '– Finished': '' }}</em>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="item-common profile-section" ng-hide="!members.length">
+            <h4 class="profile-section-title">Members</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredMembers.length">No results.</em>
+                <ul>
+                    <li ng-repeat="member in (filteredMembers = (members | filter : searchTxt))" 
+                        ui-sref="member-detail({ id: member.id })" class="clickable">
+                        {{ member.last_name + ', ' + member.first_name + ' (' + member.degree + ')' }}
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+
+</div>

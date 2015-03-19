@@ -1,0 +1,28 @@
+<div class="public-page-wrapper">
+
+    <p class="lead">{{ ::general.description }}</p>
+
+    <header>
+        <h3 class="member-page-title">Research lines</h3>
+        <input class="form-control member-detail-search" ng-model="searchTxtResearch" placeholder="Search" type="text">
+    </header>
+    
+    <hr class="member-page-sep">
+
+    <ul class="default-list project-list">
+        <li class="list-group" ng-repeat="researchLine in researchLines | filter : searchTxtResearch
+                                                                        | orderBy : 'title'">
+            <span class="list-group-item project-list-item research-line-list-item">
+                <header ui-sref="research-detail({ id: researchLine.id })" title="See details">
+                   <img ng-if="researchLine.logo" class="newspaper-logo"
+                        ng-src="{{ researchLine.logo }}" alt="Logo" width="28" height="28">
+                    <h4 class="list-group-item-heading">
+                        {{ researchLine.title }} 
+                        <em class="research-line-desc">– {{ researchLine.description | cut : false : 80 }}</em>
+                    </h4>
+                </header>
+            </span>
+        </li>
+    </ul>
+
+</div>

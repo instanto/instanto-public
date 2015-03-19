@@ -1,0 +1,113 @@
+<div class="public-page-wrapper">
+
+    <header>
+        <h3 class="member-detail-name">
+            {{ researchLine.title }} 
+            <span ng-if="researchLine.finished" class="research-finished">(finished)</span>
+        </h3>
+        <input class="form-control member-detail-search" ng-model="searchTxt" placeholder="Search" type="text">
+    </header>
+
+    <hr class="member-detail-sep">
+
+    <main>
+        <section class="item-common research-detail-section research-detail-desc">
+            <img ng-if="researchLine.logo" class="research-line-logo"
+                 ng-src="{{ researchLine.logo }}" alt="Logo" height="128">
+            {{ researchLine.description }}
+            <div class="clear"></div>
+        </section>
+       
+        <section class="item-common research-detail-section" ng-hide="!publications.length">
+            <h4 class="profile-section-title">Publications</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredPublications.length">No results.</em>
+                <ul>
+                    <li ng-repeat="publication in (filteredPublications = (publications | orderBy : 'year' : true | filter : searchTxt))">
+                        <span ui-sref="publication-detail({ title: publication.title })" class="clickable">{{ publication.title + publication.year }}</span> 
+                        <span ui-sref="member-detail({ id: publication.primary_author })" class="clickable">{{ publication.main_author }}</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="item-common research-detail-section" ng-hide="!articles.length">
+            <h4 class="profile-section-title">Articles</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredArticles.length">No results.</em>
+                <ul>
+                    <li ng-repeat="article in (filteredArticles = (articles | filter : searchTxt))">
+                        <a ng-href="{{ article.web | externalUrl }}" target="_blank">{{ article.title }}</a> on {{ article.date | dateMs }} 
+                        (published in <span>{{ article.newspaper_name }}</span>)
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="item-common research-detail-section" ng-hide="!financedProjects.length">
+            <h4 class="profile-section-title">Financed projects</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredFinancedProjects.length">No results.</em>
+                <ul>
+                    <li ng-repeat="financedProject in (filteredFinancedProjects = (financedProjects | orderBy : 'started' : true | filter : searchTxt))" 
+                        ui-sref="project-detail({ title: financedProject.title })" class="clickable">
+                        {{ financedProject.title + financedProject.dateRange }}
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="item-common research-detail-section" ng-hide="!studentWorks.length">
+            <h4 class="profile-section-title">Student works</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredStudentWorks.length">No results.</em>
+                <ul>
+                    <li ng-repeat="studentWork in (filteredStudentWorks = (studentWorks | orderBy : 'year' : true | filter : searchTxt))">
+                        {{ studentWork.title + ', ' + studentWork.year + ' at '  + studentWork.school }}
+                        <span ui-sref="member-detail({ id: studentWork.author })" class="clickable">{{ studentWork.work_author }}</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="item-common research-detail-section" ng-hide="!partners.length">
+            <h4 class="profile-section-title">Team members</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredMembers.length">No results.</em>
+                <ul>
+                    <li ng-repeat="member in (filteredMembers = (members | filter : searchTxt))" 
+                        ui-sref="member-detail({ id: member.id })" class="clickable">
+                        {{ member.last_name + (member.last_name && ', ') + member.first_name }}
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="item-common research-detail-section" ng-hide="!partners.length">
+            <h4 class="profile-section-title">Partners</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredPartners.length">No results.</em>
+                <ul>
+                    <li ng-repeat="partner in (filteredPartners = (partners | filter : searchTxt))" 
+                        ui-sref="partner-detail({ id: partner.id })" class="clickable">
+                        {{ partner.name }}
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!--<section class="item-common research-detail-section" ng-hide="!researchLines.length">
+            <h4 class="profile-section-title">Secondary research areas</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredResearchLines.length">No results.</em>
+                <ul>
+                    <li ng-repeat="researchLine in (filteredResearchLines = (researchLines | filter : searchTxt))">
+                        {{ researchLine.title + '. ' + researchLine.description }} <em class="publication-role">{{ researchLine.finished ? '– Finished': '' }}</em>
+                    </li>
+                </ul>
+            </div>
+        </section>-->
+    </main>
+
+
+</div>

@@ -1,0 +1,114 @@
+<div class="public-page-wrapper">
+
+    <header>
+        <h3 class="member-detail-name">{{ member.vFullname }}</h3>
+        <input class="form-control member-detail-search" ng-model="searchTxt" placeholder="Search" type="text">
+    </header>
+
+    <hr class="member-detail-sep">
+
+    <aside class="item-common profile-sidebar">
+        <div class="member-detail-photo"
+             style="{{ member.photo ? 'background-image: url(' + member.photo + ')' : '' }}"
+             ng-click="toggleZoomPhoto()"></div>
+        <div class="member-detail-photo-zoom"
+             ng-show="zoomPhotoOn"
+             ng-click="toggleZoomPhoto()"><img src="{{ member.photo }}"></div>
+
+        <ul class="default-list">
+            <li class="profile-prop">
+                <label>Degree:</label>
+                <span title="{{ member.degree }}">{{ member.degree }}</span>
+            </li>
+            <li class="profile-prop">
+                <label>Year in:</label>
+                <span title="{{ member.year_in }}">{{ member.year_in }}</span>
+            </li>
+            <li class="profile-prop">
+                <label>Year out:</label>
+                <span title="{{ member.year_out }}">{{ member.year_out }}</span>
+            </li>
+            <li class="profile-prop">
+                <label>Email:</label>
+                <span title="{{ member.email }}">{{ member.email }}</span>
+            </li>
+            <li class="profile-prop">
+                <label>Status:</label>
+                <span title="{{ member.status_description }}">{{ member.primary_status }}</span>
+            </li>
+        </ul>
+
+        <div ng-show="member.cv" class="cv-btn-wrapper">
+            <a ng-href="{{ member.cv }}" target="_blank" class="btn btn-default">
+                Check my <abbr title="Curriculum Vitae">CV</abbr>
+            </a>
+        </div>
+    </aside>
+    
+    <main>
+        <section class="item-common profile-section" ng-hide="!publications.length">
+            <h4 class="profile-section-title">Publications</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredPublications.length">No results.</em>
+                <ul>
+                    <li ng-repeat="publication in (filteredPublications = (publications | orderBy : 'year' : true | filter : searchTxt))" 
+                        ui-sref="publication-detail({ title: publication.title })" class="clickable">
+                        {{ publication.title + publication.year + publication.edition }} <em class="publication-role">{{ publication.role }}</em>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="item-common profile-section" ng-hide="!studentWorks.length">
+            <h4 class="profile-section-title">Student works</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredStudentWorks.length">No results.</em>
+                <ul>
+                    <li ng-repeat="studentWork in (filteredStudentWorks = (studentWorks | orderBy : 'year' : true | filter : searchTxt))">
+                        {{ studentWork.title + ', ' + studentWork.year + ' at '  + studentWork.school }}
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="item-common profile-section" ng-hide="!financedProjects.length">
+            <h4 class="profile-section-title">Financed projects</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredFinancedProjects.length">No results.</em>
+                <ul>
+                    <li ng-repeat="financedProject in (filteredFinancedProjects = (financedProjects | orderBy : 'started' : true | filter : searchTxt))" 
+                        ui-sref="project-detail({ title: financedProject.title })" class="clickable">
+                        {{ financedProject.title + financedProject.dateRange }} <em class="publication-role">{{ financedProject.role }}</em>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="item-common profile-section" ng-hide="!researchLines.length">
+            <h4 class="profile-section-title">Research lines</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredResearchLines.length">No results.</em>
+                <ul>
+                    <li ng-repeat="researchLine in (filteredResearchLines = (researchLines | filter : searchTxt))">
+                        {{ researchLine.title + '. ' + researchLine.description }} <em class="publication-role">{{ researchLine.finished ? '– Finished': '' }}</em>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="item-common profile-section" ng-hide="!partners.length">
+            <h4 class="profile-section-title">Partners</h4>
+            <div class="profile-section-content">
+                <em ng-show="!filteredPartners.length">No results.</em>
+                <ul>
+                    <li ng-repeat="partner in (filteredPartners = (partners | filter : searchTxt))" 
+                        ui-sref="partner-detail({ id: partner.id })" class="clickable">
+                        {{ partner.name }}
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+
+</div>

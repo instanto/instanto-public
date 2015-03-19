@@ -1,0 +1,62 @@
+<div class="public-page-wrapper">
+
+    <p class="lead">{{ ::general.description }}</p>
+
+    <header>
+        <h3 class="member-page-title">Our team</h3>
+        <input class="form-control member-detail-search" ng-model="searchTxtMembers" placeholder="Search" type="text">
+    </header>
+    
+    <hr class="member-page-sep">
+
+    <ul class="default-list people-list">
+        <li class="item-common member-item"
+            ng-repeat="member in members | orderBy : 'last_name' | filter : searchTxtMembers" 
+            ui-sref="member-detail({ id: member.id })">
+            <div class="member-photo"
+                 style="{{ ::member.photo ? 'background-image: url(' + member.photo + ')' : '' }}"></div>
+            <div class="member-no-photo">
+                <p title="{{ ::member.degree }}"><em>
+                          {{ ::member.degree | cut : false : 27 }}
+                </em></p>
+                <p title="{{ ::member.vFullname }}"><strong>
+                          {{ ::member.vFullname | cut : false : 27 }}
+                </strong></p>
+                <p title="{{ ::member.email }}">
+                          {{ ::member.email | cut : false : 27 }}
+                </p>
+            </div>
+        </li>
+        <div class="clear"></div>
+    </ul>
+
+
+    <header>
+        <h3 class="member-page-title">Partners</h3>
+        <input class="form-control member-detail-search" ng-model="searchTxtPartners" placeholder="Search" type="text">
+    </header>
+    
+    <hr class="member-page-sep">
+
+    <ul class="default-list people-list">
+        <li class="item-common member-item"
+            ng-repeat="member in partners | orderBy : 'name' | filter : searchTxtPartners"
+            ui-sref="partner-detail({ id: member.id })">
+            <div class="member-photo partner-photo"
+                 style="{{ ::member.logo ? 'background-image: url(' + member.logo + ')' : '' }}"></div>
+            <div class="member-no-photo">
+                <p title="{{ ::member.scope | capitalize }}"><em>
+                          {{ ::member.scope | capitalize | cut : false : 27 }}
+                </em></p>
+                <p title="{{ ::member.name }}"><strong>
+                          {{ ::member.name | cut : false : 27 }}
+                </strong></p>
+                <p title="{{ ::member.web }}">
+                          {{ ::member.web | cut : false : 27 }}
+                </p>
+            </div>
+        </li>
+        <div class="clear"></div>
+    </ul>
+
+</div>

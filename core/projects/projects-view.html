@@ -1,0 +1,96 @@
+<nav class="navbar navbar-inverse secondary-navbar secondary-navbar-appear">
+    <div class="container-fluid top-navbar-inner">
+        <div class="navbar-header">
+            <button data-toggle="collapse" class="navbar-toggle collapsed" type="button"
+                    data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control subnav-input" 
+                           ng-model="projectSearch.nameBox" placeholder="Search" title="Search by (almost) any field">
+                </div>
+            </form>
+
+            <div class="v-sep"></div>
+
+            <form class="navbar-form navbar-left">
+                <select class="form-control subnav-input" ng-model="projectSearch.criteria">
+                    <option value="" disabled>Order by...</option>   
+                    <option value="title">Title</option>
+                    <option value="started">Start date</option>
+                    <option value="ended">End date</option>
+                    <option value="budget">Budget</option>
+                    <option value="scope">Scope</option>
+                </select>
+            </form>
+
+            <div class="v-sep"></div>
+           
+            <form class="navbar-form navbar-left">
+                <select class="form-control subnav-input" ng-model="projectSearch.reversedTmp">
+                    <option value="" disabled>Order way...</option>   
+                    <option value="true">Ascendant</option>
+                    <option value="false">Descendant</option>
+                </select>
+            </form>
+
+            <div class="v-sep"></div>
+            
+            <form class="navbar-form navbar-left">
+                <div class="checkbox" ng-click="toggleProjects()" title="Open or close all the project boxes">
+                    <label>
+                        <input type="checkbox" ng-model="projectSearch.toggleOn">
+                        &nbsp;<span>Toggle all</span>
+                    </label>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="public-page-wrapper">
+
+    <p class="lead">{{ ::general.description }}</p>
+
+    <header>
+        <h3 class="member-page-title">Financed projects</h3>
+    </header>
+    
+    <hr class="member-page-sep">
+    
+    <ul class="default-list project-list">
+        <li class="list-group" 
+            ng-repeat="project in financedProjects | filter  : projectSearch.nameBox
+                                                   | orderBy : projectSearch.criteria : projectSearch.reversed">
+            <span ng-class="{ 'project-list-item-open': project.openBox }"
+                     class="list-group-item project-list-item">
+                <header ng-click="toggleProjectBox(project.genuineIdx)" title="See details">
+                    <h4 class="list-group-item-heading">{{ project.title }}</h4>
+                    <button role="presentation"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                </header>
+                <section ng-show="project.openBox">
+                    <ul class="list-group-item-text">
+                        <li><label>Start date:</label> {{ project.started }}</li>
+                        <li><label>End date:</label> {{ project.ended }}</li>
+                        <li><label>Budget:</label> {{ project.budget }}€</li>
+                        <li><label>Leaders:</label> 
+                                <span ng-repeat="member in project.projectLeaders" class="clickable"
+                                      ui-sref="member-detail({ id: member.id })">{{ member.name }}<span ng-if="!$last">, </span></span></li>
+                        <li><label>Funding bodies:</label> {{ project.fundingBodies }}</li>
+                        <li><label>Primary record:</label> {{ project.primary_record }}</li>
+                        <li><label>Scope:</label> {{ project.scope }}</li>
+                    </ul>
+                </section>
+            </span>
+        </li>
+    </ul>
+    
+
+</div>

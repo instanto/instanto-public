@@ -1,0 +1,73 @@
+<nav class="navbar navbar-inverse secondary-navbar secondary-navbar-appear">
+    <div class="container-fluid top-navbar-inner">
+        <div class="navbar-header">
+            <button data-toggle="collapse" class="navbar-toggle collapsed" type="button"
+                    data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control subnav-input" 
+                           ng-model="pressSearch.nameBox" placeholder="Search by article's title">
+                </div>
+            </form>
+
+            <div class="v-sep"></div>
+            
+            <form class="navbar-form navbar-left">
+                <div class="checkbox" ng-click="toggleNewspapers()" title="Open or close all the newspaper boxes">
+                    <label>
+                        <input type="checkbox" ng-model="pressSearch.toggleOn">
+                        &nbsp;<span>Toggle all</span>
+                    </label>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="public-page-wrapper">
+
+    <p class="lead">{{ ::general.description }}</p>
+
+    <header>
+        <h3 class="member-page-title">Newspapers' articles</h3>
+    </header>
+    
+    <hr class="member-page-sep">
+    
+    <ul class="default-list project-list">
+        <li class="list-group" 
+            ng-repeat="newspaper in newspapers | orderBy : 'name'">
+            <span ng-class="{ 'project-list-item-open': newspaper.openBox }"
+                     class="list-group-item project-list-item">
+                <header ng-click="toggleNewspaperBox(newspaper.genuineIdx)" title="Display articles">
+                    <img ng-if="newspaper.logo" class="newspaper-logo"
+                         ng-src="{{ newspaper.logo }}" alt="Logo" width="28" height="28">
+                    <h4 class="list-group-item-heading">{{ newspaper.name }} 
+                        <a ng-href="{{ newspaper.web }}" target="_blank" title="Visit website"
+                           ng-click="stopClick($event)"><i class="glyphicon glyphicon-link gly-sm"></i></a>
+                    </h4>
+                    <button role="presentation"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                </header>
+                <section ng-show="newspaper.openBox">
+                    <ul class="list-group-item-text">
+                        <em ng-show="!filteredArticles.length">No results.</em>
+                        <li ng-repeat="article in (filteredArticles = (newspaper.articles | filter : { title: pressSearch.nameBox }
+                                                                                          | orderBy : 'date'))">
+                            <a ng-href="{{ article.web | externalUrl }}" target="_blank">{{ article.title }}</a> on {{ article.date | dateMs }}
+                        </li>
+                    </ul>
+                </section>
+            </span>
+        </li>
+    </ul>
+    
+
+</div>
