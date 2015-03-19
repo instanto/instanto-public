@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('UranusClient')
+angular.module('InstantoClient')
 .controller('MembersCtrl', ['$scope', 'MembersSrv',
                    function ($scope,   MembersSrv) {
 

@@ -1,4 +1,4 @@
-angular.module('UranusClient')
+angular.module('InstantoClient')
 .controller('MemberDetailCtrl', ['$scope', '$filter', '$stateParams', 'CONST', 'MembersSrv', 'StatusesSrv',
                         function ($scope,   $filter,   $stateParams,   CONST,   MembersSrv,   StatusesSrv) {
 

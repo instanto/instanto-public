@@ -1,4 +1,4 @@
-angular.module('UranusClient')
+angular.module('InstantoClient')
 .factory('PublicationsSrv', ['$http', 'CONST',
                     function ($http,   CONST) {
 

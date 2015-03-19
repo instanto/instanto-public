@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('UranusClient')
+angular.module('InstantoClient')
 .config([    '$stateProvider', '$urlRouterProvider',
     function ($stateProvider,   $urlRouterProvider) {
 

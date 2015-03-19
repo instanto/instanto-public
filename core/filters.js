@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('UranusClient')
+angular.module('InstantoClient')
 
     // Capitalizes the very first letter
     .filter('capitalize', function () {

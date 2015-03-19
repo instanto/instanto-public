@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('UranusClient')
+angular.module('InstantoClient')
 .controller('PartnerDetailCtrl', ['$scope', '$filter', '$stateParams', 'CONST', 'PartnersSrv',
                          function ($scope,   $filter,   $stateParams,   CONST,   PartnersSrv) {
 

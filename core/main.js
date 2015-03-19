@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-.module('UranusClient', [
+.module('InstantoClient', [
     'ui.router',
     'ui.bootstrap'
 ])
@@ -9,7 +9,7 @@ angular
                 function ($scope) {
 
     $scope.appDetails = {
-        name: 'Uranus',
+        name: 'Instanto',
         imageName: 'brand-logo.png'
     };
     

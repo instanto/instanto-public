@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('UranusClient')
+angular.module('InstantoClient')
 .controller('PressCtrl', ['$scope', '$filter', 'CONST', 'NewspaperSrv',
                  function ($scope,   $filter,   CONST,   NewspaperSrv) {
 
