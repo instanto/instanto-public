@@ -15,6 +15,6 @@ angular
     
 }])
 .constant('CONST', {
-    apiUrl: 'http://localhost:3000/api/',
+    apiUrl: '/api/',
     dateFormat: 'MMM dd, yyyy' // e.g. Oct 29, 2010
 });
