@@ -161,7 +161,7 @@ hr {
 
 .secondary-navbar .checkbox {
     margin-top: 7px;
-    color: #eee;
+    /*color: #eee;*/
 }
 
 .secondary-navbar .checkbox span {
@@ -180,7 +180,7 @@ hr {
 input[type="checkbox"]:checked:after,
 .checkbox input[type="checkbox"]:checked:after,
 .checkbox-inline input[type="checkbox"]:checked:after {
-    border-color: rgba(0,0,0, .2);
+    /*border-color: rgba(0,0,0, .2);*/
 }
 
 .subnav-input {
@@ -191,22 +191,22 @@ input[type="checkbox"]:checked:after,
 }
 
 .subnav-input > option:disabled {
-    color: #bbb;
+    /*color: #bbb;*/
 }
 
 select.subnav-input {
-    min-width: 60px;
+    /*min-width: 60px;
     cursor: pointer;
 
     -webkit-transition: color .4s;
-            transition: color .4s;
+            transition: color .4s;*/
 }
 select.subnav-input:focus {
-    box-shadow: inset 0 -1px 0 #ddd !important;
+ /*   box-shadow: inset 0 -1px 0 #ddd !important;
 }
 select.subnav-input:active {
     box-shadow: none !important;
-    color: rgba(0,0,0, .5) !important;
+    color: rgba(0,0,0, .5) !important;*/
 }
 
 .jumbotron {
@@ -676,7 +676,7 @@ select.subnav-input:active {
 
 .research-finished,
 .research-line-desc {
-    color: #aaa;
+    /*color: #aaa;*/
 }
 
 .research-detail-desc {
@@ -703,7 +703,7 @@ select.subnav-input:active {
     
     .navbar-inverse .navbar-collapse, 
     .navbar-inverse .navbar-form {
-        border-bottom-color: transparent;
+        /*border-bottom-color: transparent;*/
     }
     
     .secondary-navbar .navbar-form:first-child {

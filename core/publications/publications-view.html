@@ -67,7 +67,7 @@
                <div class="publication-in">
                     <div class="publication-item-cover" ui-sref="publication-detail({ id: pub.id })">
                         <h1 ng-style="setFontSize(pub.title)">{{ pub.title }}</h1>
-                        <img src="../../img/book-cover/triangular/triangular/triangular.png" alt="{{ pub.title }}">
+                        <img ng-src="img/book-cover/triangular/triangular/triangular.png" alt="{{ pub.title }}">
                     </div>
                     <div class="publication-item-spine">
                         <h1>{{ pub.year }}</h1>
