@@ -78,20 +78,20 @@
                 <section ng-show="work.openBox">
                     <ul class="list-group-item-text">
                         <li><label>Author:</label> 
-                            <span class="clickable" 
-                                  ui-sref="member-detail({ id: work.author })">{{ work.author_name }}</span></li>
+                            <a ui-sref="member-detail({ id: work.author })">{{ work.author_name }}</a></li>
                         <li><label>School:</label> {{ work.school }}</li>
                         <li><label>Year:</label> {{ work.year }}</li>
                         <li><label>Work type:</label> {{ work.type_name }}</li>
                         <li><label>Volumne:</label> {{ work.volume }}</li>
                         <li><label>Research lines:</label> 
-                                <span ng-repeat="line in work.researchLines" class="clickable"
-                                      ui-sref="research-detail({ id: line.id })">{{ line.title }}<span ng-if="!$last">, </span></span></li>
+                            <span ng-repeat="line in work.researchLines">
+                                <a ui-sref="research-detail({ id: line.id })">{{ line.title }}</a><span ng-if="!$last">, </span>
+                            </span>
+                        </li>
                     </ul>
                 </section>
             </span>
         </li>
     </ul>
-    
 
 </div>

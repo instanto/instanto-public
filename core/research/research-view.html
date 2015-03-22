@@ -18,7 +18,7 @@
                         ng-src="{{ researchLine.logo }}" alt="Logo" width="28" height="28">
                     <h4 class="list-group-item-heading">
                         {{ researchLine.title }} 
-                        <em class="research-line-desc">– {{ researchLine.description | cut : false : 80 }}</em>
+                        <em class="research-line-desc" ng-if="researchLine.finished">– Finished <i class="fa fa-check-circle-o research-check"></i></em>
                     </h4>
                 </header>
             </span>

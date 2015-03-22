@@ -51,9 +51,9 @@
             <div class="profile-section-content">
                 <em ng-show="!filteredPublications.length">No results.</em>
                 <ul>
-                    <li ng-repeat="publication in (filteredPublications = (publications | orderBy : 'year' : true | filter : searchTxt))" 
-                        ui-sref="publication-detail({ title: publication.title })" class="clickable">
-                        {{ publication.title + publication.year + publication.edition }} <em class="publication-role">{{ publication.role }}</em>
+                    <li ng-repeat="publication in (filteredPublications = (publications | orderBy : 'year' : true | filter : searchTxt))">
+                        <a ui-sref="publication-detail({ title: publication.title })">{{ publication.title }}</a>,
+                        {{ publication.year + publication.edition }} <em class="publication-role">{{ publication.role }}</em>
                     </li>
                 </ul>
             </div>
@@ -65,7 +65,8 @@
                 <em ng-show="!filteredStudentWorks.length">No results.</em>
                 <ul>
                     <li ng-repeat="studentWork in (filteredStudentWorks = (studentWorks | orderBy : 'year' : true | filter : searchTxt))">
-                        {{ studentWork.title + ', ' + studentWork.year + ' at '  + studentWork.school }}
+                        <a ui-sref="student-work-detail({ title: studentWork.title })">{{ studentWork.title }}</a>,
+                        {{ studentWork.year + ' at '  + studentWork.school }}
                     </li>
                 </ul>
             </div>
@@ -76,9 +77,9 @@
             <div class="profile-section-content">
                 <em ng-show="!filteredFinancedProjects.length">No results.</em>
                 <ul>
-                    <li ng-repeat="financedProject in (filteredFinancedProjects = (financedProjects | orderBy : 'started' : true | filter : searchTxt))" 
-                        ui-sref="project-detail({ title: financedProject.title })" class="clickable">
-                        {{ financedProject.title + financedProject.dateRange }} <em class="publication-role">{{ financedProject.role }}</em>
+                    <li ng-repeat="financedProject in (filteredFinancedProjects = (financedProjects | orderBy : 'started' : true | filter : searchTxt))">
+                        <a ui-sref="project-detail({ title: financedProject.title })">{{ financedProject.title }}</a>
+                        {{ financedProject.dateRange }} <em class="publication-role">{{ financedProject.role }}</em>
                     </li>
                 </ul>
             </div>
@@ -90,7 +91,9 @@
                 <em ng-show="!filteredResearchLines.length">No results.</em>
                 <ul>
                     <li ng-repeat="researchLine in (filteredResearchLines = (researchLines | filter : searchTxt))">
-                        {{ researchLine.title + '. ' + researchLine.description }} <em class="publication-role">{{ researchLine.finished ? '– Finished': '' }}</em>
+                        <a ui-sref="research-detail({ id: researchLine.id })">{{ researchLine.title }}</a>.
+                        {{ researchLine.description }}
+                        <em class="publication-role">{{ researchLine.finished ? '– Finished': '' }}</em>
                     </li>
                 </ul>
             </div>
@@ -101,9 +104,8 @@
             <div class="profile-section-content">
                 <em ng-show="!filteredPartners.length">No results.</em>
                 <ul>
-                    <li ng-repeat="partner in (filteredPartners = (partners | filter : searchTxt))" 
-                        ui-sref="partner-detail({ id: partner.id })" class="clickable">
-                        {{ partner.name }}
+                    <li ng-repeat="partner in (filteredPartners = (partners | filter : searchTxt))">
+                        <a ui-sref="partner-detail({ id: partner.id })">{{ partner.name }}</a>
                     </li>
                 </ul>
             </div>

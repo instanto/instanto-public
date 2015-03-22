@@ -14,15 +14,15 @@ angular.module('InstantoClient')
         })
 
         .state('projects', {
-            url: '/projects/financed',
+            url: '/projects',
             templateUrl: 'core/projects/projects-view.html',
             controller: 'ProjectsCtrl'
         })
 
-        .state('student-works', {
-            url: '/projects/student_works',
-            templateUrl: 'core/projects/student-works-view.html',
-            controller: 'StudentWorksCtrl'
+        .state('project-detail', {
+            url: '/projects/{title:string}',
+            templateUrl: 'core/projects/projects-view.html',
+            controller: 'ProjectsCtrl'
         })
 
         .state('members', {
@@ -50,21 +50,33 @@ angular.module('InstantoClient')
         })
 
         .state('research-detail', {
-            url: '/research/line/{id:int}',
+            url: '/research/lines/{id:int}',
             templateUrl: 'core/research/research-detail-view.html',
             controller: 'ResearchDetailCtrl'
         })
 
         .state('publications', {
-            url: '/publications',
+            url: '/publications/normal',
             templateUrl: 'core/publications/publications-view.html',
             controller: 'PublicationsCtrl'
         })
 
         .state('publication-detail', {
-            url: '/publications/{title:string}',
+            url: '/publications/normal/{title:string}',
             templateUrl: 'core/publications/publications-view.html',
             controller: 'PublicationsCtrl'
+        })
+
+        .state('student-works', {
+            url: '/publications/student_works',
+            templateUrl: 'core/publications/student-works-view.html',
+            controller: 'StudentWorksCtrl'
+        })
+
+        .state('student-work-detail', {
+            url: '/publications/student_works/{title:string}',
+            templateUrl: 'core/projects/student-works-view.html',
+            controller: 'StudentWorksCtrl'
         })
 
         .state('press', {
@@ -79,9 +91,14 @@ angular.module('InstantoClient')
 
     $scope.mainNavRoutes = [
         { state: 'projects' },
-        { state: 'members' },
+        { state: 'members'  },
         { state: 'research' },
-        { state: 'publications' },
+        { state: 'publications',
+          children: [
+              { ref: 'publications',  name: 'Publications'  },
+              { ref: 'student-works', name: 'Student works' }
+          ]
+        },
         { state: 'press' }
     ];
 

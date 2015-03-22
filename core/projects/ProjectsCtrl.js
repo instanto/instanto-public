@@ -66,7 +66,8 @@ angular.module('InstantoClient')
                 if (data) {
                     leaders = leaders.concat({
                                   id: $scope.financedProjects[i].primary_leader,
-                                  name: data.first_name + ' ' + data.last_name + ' (Primary)'
+                                  name: data.first_name + ' ' + data.last_name,
+                                  role: ' (Primary)'
                               });
                     $scope.financedProjects[i].projectLeaders = leaders;
                 }
@@ -129,7 +130,7 @@ angular.module('InstantoClient')
         }
     };
     
-                        
+
     getAll();
     
                         

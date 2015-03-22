@@ -45,6 +45,17 @@
                     <option value="false">Descendant</option>
                 </select>
             </form>
+
+            <div class="v-sep"></div>
+            
+            <form class="navbar-form navbar-left">
+                <div class="checkbox" ng-click="togglePublications()" title="Open or close all the publication boxes">
+                    <label>
+                        <input type="checkbox" ng-model="publicationSearch.toggleOn">
+                        &nbsp;<span>Toggle all</span>
+                    </label>
+                </div>
+            </form>
         </div>
     </div>
 </nav>
@@ -59,56 +70,48 @@
     
     <hr class="member-page-sep">
 
-    <ul class="default-list publication-list">
-        <li class="publication-item"
+    <ul class="default-list project-list">
+        <li class="list-group" 
             ng-repeat="pub in publications | filter  : publicationSearch.nameBox
                                            | orderBy : publicationSearch.criteria : publicationSearch.reversed">
-            <article class="publication-out">
-               <div class="publication-in">
-                    <div class="publication-item-cover" ui-sref="publication-detail({ id: pub.id })">
-                        <h1 ng-style="setFontSize(pub.title)">{{ pub.title }}</h1>
-                        <img src="../../img/book-cover/triangular/triangular/triangular.png" alt="{{ pub.title }}">
-                    </div>
-                    <div class="publication-item-spine">
-                        <h1>{{ pub.year }}</h1>
-                    </div>
-               </div>
-            </article>
-            
-            <section class="publication-item-info">
-                <ul>
-                    <li ng-show="pub.journal"><b>Journal:</b> {{ pub.journal }}</li>
-                    <li ng-show="pub.journal"><b>Editorial:</b> {{ pub.journal }}</li>
-                    <li ng-show="pub.edition"><b>Edition:</b> {{ pub.edition }}</li>
-                    <li ng-show="pub.publication_type"><b>Type:</b> {{ pub.publication_type }}</li>
-                    <li ng-show="pub.primary_author"><b>Author:</b> 
-                        <span ui-sref="member-detail({ id: pub.primary_author })" class="clickable">{{ pub.author_name }}</span></li>
-                    <li ng-show="pub.volume || pub.number || pub.pages">
-                        <span ng-show="pub.volume"><b>Volume:</b> {{ pub.volume }}</span>
-                        <span ng-show="pub.number"><b>Number:</b> {{ pub.number }}</span>
-                        <span ng-show="pub.pages"><b>Pages:</b> {{ pub.pages }}</span>
-                    </li>
-                    <li ng-show="pub.series"><b>Series:</b> {{ pub.series }}</li>
-                    <li ng-show="pub.isbn"><b>ISBN:</b> {{ pub.isbn }}</li>
-                    <li ng-show="pub.issn"><b>ISSN:</b> {{ pub.issn }}</li>
-                    <li ng-show="pub.city"><b>City:</b> {{ pub.city }}</li>
-                    <li ng-show="pub.country"><b>Country:</b> {{ pub.country }}</li>
-                    <li ng-show="pub.conference_name"><b>Conference name:</b> {{ pub.conference_name }}</li>
-                    <li ng-show="pub.journal"><b>Impact factor:</b> {{ pub.journal }}</li>
-                    <li ng-show="pub.publisher"><b>Publisher:</b> {{ pub.publisher }}</li>
-                    <li ng-show="pub.chapter"><b>Chapter:</b> {{ pub.chapter }}</li>
-                    <li ng-show="pub.year"><b>Year:</b> {{ pub.year }}</li>
-                    <li ng-show="pub.language"><b>Language:</b> {{ pub.language }}</li>
-                    <li ng-show="pub.nationality"><b>Nationality:</b> {{ pub.nationality }}</li>
-                    <li ng-show="pub.institution"><b>Institution:</b> {{ pub.institution }}</li>
-                    <li ng-show="pub.organization"><b>Organization:</b> {{ pub.organization }}</li>
-                    <li ng-show="pub.school"><b>School:</b> {{ pub.school }}</li>
-                </ul>
-            </section>
-            
-            <div class="clear"></div>
+            <span ng-class="{ 'project-list-item-open': pub.openBox }"
+                     class="list-group-item project-list-item">
+                <header ng-click="togglePublicationBox(pub.genuineIdx)" title="See details">
+                    <h4 class="list-group-item-heading">{{ pub.title }}</h4>
+                    <button role="presentation"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                </header>
+                <section ng-show="pub.openBox">
+                    <ul class="list-group-item-text">
+                        <li ng-show="pub.journal"><b>Journal:</b> {{ pub.journal }}</li>
+                        <li ng-show="pub.journal"><b>Editorial:</b> {{ pub.journal }}</li>
+                        <li ng-show="pub.edition"><b>Edition:</b> {{ pub.edition }}</li>
+                        <li ng-show="pub.publication_type"><b>Type:</b> {{ pub.publication_type }}</li>
+                        <li ng-show="pub.primary_author"><b>Author:</b> 
+                            <a ui-sref="member-detail({ id: pub.primary_author })">{{ pub.author_name }}</a></li>
+                        <li ng-show="pub.volume || pub.number || pub.pages">
+                            <span ng-show="pub.volume"><b>Volume:</b> {{ pub.volume }}</span>
+                            <span ng-show="pub.number"><b>Number:</b> {{ pub.number }}</span>
+                            <span ng-show="pub.pages"><b>Pages:</b> {{ pub.pages }}</span>
+                        </li>
+                        <li ng-show="pub.series"><b>Series:</b> {{ pub.series }}</li>
+                        <li ng-show="pub.isbn"><b>ISBN:</b> {{ pub.isbn }}</li>
+                        <li ng-show="pub.issn"><b>ISSN:</b> {{ pub.issn }}</li>
+                        <li ng-show="pub.city"><b>City:</b> {{ pub.city }}</li>
+                        <li ng-show="pub.country"><b>Country:</b> {{ pub.country }}</li>
+                        <li ng-show="pub.conference_name"><b>Conference name:</b> {{ pub.conference_name }}</li>
+                        <li ng-show="pub.journal"><b>Impact factor:</b> {{ pub.journal }}</li>
+                        <li ng-show="pub.publisher"><b>Publisher:</b> {{ pub.publisher }}</li>
+                        <li ng-show="pub.chapter"><b>Chapter:</b> {{ pub.chapter }}</li>
+                        <li ng-show="pub.year"><b>Year:</b> {{ pub.year }}</li>
+                        <li ng-show="pub.language"><b>Language:</b> {{ pub.language }}</li>
+                        <li ng-show="pub.nationality"><b>Nationality:</b> {{ pub.nationality }}</li>
+                        <li ng-show="pub.institution"><b>Institution:</b> {{ pub.institution }}</li>
+                        <li ng-show="pub.organization"><b>Organization:</b> {{ pub.organization }}</li>
+                        <li ng-show="pub.school"><b>School:</b> {{ pub.school }}</li>
+                    </ul>
+                </section>
+            </span>
         </li>
-        <div class="clear"></div>
-    </ul>   
+    </ul> 
 
 </div>

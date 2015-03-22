@@ -34,7 +34,6 @@ angular.module('InstantoClient')
     var reshapePublication = function (publicationList, role) {
         angular.forEach(publicationList, function (publication) {
             publication.edition = publication.edition ? ' (Edition ' + publication.edition + ')' : '';
-            publication.year = publication.year ? ', ' + publication.year : '';
             publication.role = role ? ' – ' + role : '';
         });
         return publicationList;

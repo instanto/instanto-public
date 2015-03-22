@@ -549,112 +549,6 @@ select.subnav-input:active {
 
 /* Publications */
 
-.publication-list {
-    padding-bottom: 16px;
-}
-
-.publication-item {
-    width: 100%;
-    float: left;
-    padding-bottom: 16px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ccc;
-    box-shadow: 0 1px 0 rgba(255,255,255, .6);
-}
-
-/* 3D book */
-
-.publication-out {
-    display: block; 
-    float: left;
-    width: 247px;
-    padding: 8px 0 8px 16px; margin: 0 auto;
-    position: relative; top: -5px;
-    -webkit-perspective: 1200px;
-       -moz-perspective: 1200px;
-            perspective: 1200px;
-}
- 
-.publication-in { 
-    z-index: 5;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
-    -webkit-transition: .7s;
-       -moz-transition: .7s;
-            transition: .7s;
-    -webkit-transform-style: preserve-3d;
-       -moz-transform-style: preserve-3d;
-            transform-style: preserve-3d;
-    -webkit-transform-origin: 125px 0;
-       -moz-transform-origin: 125px 0;
-            transform-origin: 125px 0;
-}
-.publication-in:after { 
-    content: ''; width: 7px;
-    position: absolute; top: 0; bottom: 0; left: 3px; z-index: 20;
-    background: url(../img/book-cover/ridge.png) repeat-y; opacity: .8;
-    -webkit-transform: translateZ(1px); /* Fix for flickering in Chrome  */
-}
-.publication-in:hover {
-    -webkit-transform: translateX(-10px) translateZ(35px) translateX(35px) rotateY(45deg);
-       -moz-transform: translateX(-10px) translateZ(35px) translateX(35px) rotateY(45deg);
-            transform: translateX(-10px) translateZ(35px) translateX(35px) rotateY(45deg);
-}
-
-.publication-item-cover {
-    width: 100%; padding: 0 12px; text-align: center; line-height: 300px;
-    position: relative; z-index: 10; overflow: hidden; 
-}
-.publication-item-cover > img { 
-    vertical-align: bottom; max-width: 100%; height: 300px; 
-    position: absolute; top: 0; left: 0;
-}
-.publication-item-cover > h1 {
-    margin: 0;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 135%;
-    text-shadow: 0 1px 0 rgba(255,255,255, .5);
-    position: relative; z-index: 1; left: 4px;
-}
-
-.publication-item-spine { 
-    width: 50px; overflow: hidden;
-    position: absolute; bottom: 0; top: 0; z-index: 5; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .25); 
-    background: url(../img/book-cover/triangular/triangular/triangular.png) -64px 0 no-repeat; 
-    background-size: auto 100%; color: #fff;
-    -webkit-transform: rotateY(-90deg) translateX(-49px);
-       -moz-transform: rotateY(-90deg) translateX(-49px);
-            transform: rotateY(-90deg) translateX(-49px);
-    -webkit-transform-origin: 0 0;
-       -moz-transform-origin: 0 0;
-            transform-origin: 0 0;
-}
-.publication-item-spine h1 { 
-    display: block; width: 325px; 
-    text-align: left; color: #fff; 
-    position: absolute; top: 0; left: 39px; 
-    text-indent: 43px; text-transform: uppercase;
-    font-size: 2em; font-weight: normal;
-    opacity: .75;
-    -webkit-font-smoothing: antialiased;
-    -webkit-transform: rotateZ(90deg);
-       -moz-transform: rotateZ(90deg);
-            transform: rotateZ(90deg);
-    -webkit-transform-origin: 0 0;
-       -moz-transform-origin: 0 0;
-            transform-origin: 0 0;
-}
-.publication-item-spine:before { content: ''; display: block; width: 100%; height: 100%; background: rgba(0, 0, 0, .3); }
-
-.publication-item-info {
-    float: left;
-    width: calc(100% - 247px);
-    font-size: 15px;
-}
-
-.publication-item-info li {}
-
 
 /* Press */
 
@@ -691,6 +585,10 @@ select.subnav-input:active {
     float: left;
     margin-right: 16px;
     background: black
+}
+
+.research-check {
+    color: #45774b;
 }
 
 

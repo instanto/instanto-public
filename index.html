@@ -8,6 +8,7 @@
     <!-- Vendor styles -->
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
     <link type="text/css" rel="stylesheet" href="css/bootswatch-paper.min.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <!-- Instanto' styles -->
     <link type="text/css" rel="stylesheet" href="css/main.css" />
@@ -34,15 +35,14 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="main-navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li ng-class="{ active: routeContains(route.state), dropdown: route.state == 'projects' }"
+                    <li ng-class="{ active: routeContains(route.state), dropdown: route.children }"
                         ng-repeat="route in mainNavRoutes" >
-                        <a ng-if="route.state != 'projects'" ui-sref="{{ route.state }}">{{ route.state | capitalize }}</a>
-                        <a ng-if="route.state == 'projects'" class="dropdown-toggle" 
-                           data-toggle="dropdown" aria-expanded="false">{{ route.state | capitalize }} <span class="caret"></span></a>
-                           
-                        <ul ng-if="route.state == 'projects'" class="dropdown-menu">
-                            <li><a ui-sref="projects">Financed projects</a></li>
-                            <li><a ui-sref="student-works">Student works</a></li>
+                        <a ng-if="!route.children" ui-sref="{{ route.state }}">{{ route.state | capitalize }}</a>
+                        <a ng-if="route.children" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                          {{ route.state | capitalize }} <span class="caret"></span>
+                        </a>                           
+                        <ul ng-if="route.children" class="dropdown-menu">
+                            <li ng-repeat="child in route.children"><a ui-sref="{{ child.ref }}">{{ child.name }}</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -68,8 +68,6 @@
 
 <script type="text/javascript" src="core/projects/ProjectsSrv.js"></script>
 <script type="text/javascript" src="core/projects/ProjectsCtrl.js"></script>
-<script type="text/javascript" src="core/projects/StudentWorksSrv.js"></script>
-<script type="text/javascript" src="core/projects/StudentWorksCtrl.js"></script>
 
 <script type="text/javascript" src="core/members/MembersSrv.js"></script>
 <script type="text/javascript" src="core/members/MembersCtrl.js"></script>
@@ -86,6 +84,8 @@
 <script type="text/javascript" src="core/publications/PublicationsSrv.js"></script>
 <script type="text/javascript" src="core/publications/PublicationsCtrl.js"></script>
 <script type="text/javascript" src="core/publications/PublisherSrv.js"></script>
+<script type="text/javascript" src="core/publications/StudentWorksSrv.js"></script>
+<script type="text/javascript" src="core/publications/StudentWorksCtrl.js"></script>
 
 <script type="text/javascript" src="core/press/PressCtrl.js"></script>
 <script type="text/javascript" src="core/press/NewspaperSrv.js"></script>

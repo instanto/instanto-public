@@ -25,13 +25,11 @@ angular.module('InstantoClient')
                 
                               
     var reshapePublication = function (publicationList, role) {
-        angular.forEach(publicationList, function (publication) {
-            publication.year = publication.year ? ', ' + publication.year : '';
-            
+        angular.forEach(publicationList, function (publication) {            
             MembersSrv.getById(publication.primary_author)
                 .success(function (data) {
                     if (data) {
-                        publication.main_author = '(by ' + data.last_name + ', ' + data.first_name + ')';
+                        publication.main_author = data.last_name + ', ' + data.first_name;
                     }
                 })
                 .error(function (data) {
@@ -114,7 +112,7 @@ angular.module('InstantoClient')
             MembersSrv.getById(work.author)
                 .success(function (data) {
                     if (data) {
-                        work.work_author = '(by ' + data.last_name + ', ' + data.first_name + ')';
+                        work.work_author = data.last_name + ', ' + data.first_name;
                     }
                 })
                 .error(function (data) {

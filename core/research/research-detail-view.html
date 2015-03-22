@@ -24,8 +24,9 @@
                 <em ng-show="!filteredPublications.length">No results.</em>
                 <ul>
                     <li ng-repeat="publication in (filteredPublications = (publications | orderBy : 'year' : true | filter : searchTxt))">
-                        <span ui-sref="publication-detail({ title: publication.title })" class="clickable">{{ publication.title + publication.year }}</span> 
-                        <span ui-sref="member-detail({ id: publication.primary_author })" class="clickable">{{ publication.main_author }}</span>
+                        <a ui-sref="publication-detail({ title: publication.title })">{{ publication.title }}</a>,
+                        {{ publication.year }}
+                        (by <a ui-sref="member-detail({ id: publication.primary_author })">{{ publication.main_author }}</a>)
                     </li>
                 </ul>
             </div>
@@ -49,9 +50,9 @@
             <div class="profile-section-content">
                 <em ng-show="!filteredFinancedProjects.length">No results.</em>
                 <ul>
-                    <li ng-repeat="financedProject in (filteredFinancedProjects = (financedProjects | orderBy : 'started' : true | filter : searchTxt))" 
-                        ui-sref="project-detail({ title: financedProject.title })" class="clickable">
-                        {{ financedProject.title + financedProject.dateRange }}
+                    <li ng-repeat="financedProject in (filteredFinancedProjects = (financedProjects | orderBy : 'started' : true | filter : searchTxt))">
+                        <a ui-sref="project-detail({ title: financedProject.title })">{{ financedProject.title }}</a>
+                        {{ financedProject.dateRange }}
                     </li>
                 </ul>
             </div>
@@ -63,8 +64,9 @@
                 <em ng-show="!filteredStudentWorks.length">No results.</em>
                 <ul>
                     <li ng-repeat="studentWork in (filteredStudentWorks = (studentWorks | orderBy : 'year' : true | filter : searchTxt))">
-                        {{ studentWork.title + ', ' + studentWork.year + ' at '  + studentWork.school }}
-                        <span ui-sref="member-detail({ id: studentWork.author })" class="clickable">{{ studentWork.work_author }}</span>
+                        <a ui-sref="student-work-detail({ title: studentWork.title })">{{ studentWork.title }}</a>,
+                        {{ studentWork.year + ' at '  + studentWork.school }}
+                        (by <a ui-sref="member-detail({ id: studentWork.author })">{{ studentWork.work_author }}</a>)
                     </li>
                 </ul>
             </div>
@@ -75,9 +77,8 @@
             <div class="profile-section-content">
                 <em ng-show="!filteredMembers.length">No results.</em>
                 <ul>
-                    <li ng-repeat="member in (filteredMembers = (members | filter : searchTxt))" 
-                        ui-sref="member-detail({ id: member.id })" class="clickable">
-                        {{ member.last_name + (member.last_name && ', ') + member.first_name }}
+                    <li ng-repeat="member in (filteredMembers = (members | filter : searchTxt))">
+                        <a ui-sref="member-detail({ id: member.id })">{{ member.last_name + (member.last_name && ', ') + member.first_name }}</a>
                     </li>
                 </ul>
             </div>
@@ -88,9 +89,8 @@
             <div class="profile-section-content">
                 <em ng-show="!filteredPartners.length">No results.</em>
                 <ul>
-                    <li ng-repeat="partner in (filteredPartners = (partners | filter : searchTxt))" 
-                        ui-sref="partner-detail({ id: partner.id })" class="clickable">
-                        {{ partner.name }}
+                    <li ng-repeat="partner in (filteredPartners = (partners | filter : searchTxt))">
+                        <a ui-sref="partner-detail({ id: partner.id })">{{ partner.name }}</a>
                     </li>
                 </ul>
             </div>

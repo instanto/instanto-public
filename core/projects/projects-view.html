@@ -81,8 +81,10 @@
                         <li><label>End date:</label> {{ project.ended }}</li>
                         <li><label>Budget:</label> {{ project.budget }}€</li>
                         <li><label>Leaders:</label> 
-                                <span ng-repeat="member in project.projectLeaders" class="clickable"
-                                      ui-sref="member-detail({ id: member.id })">{{ member.name }}<span ng-if="!$last">, </span></span></li>
+                            <span ng-repeat="member in project.projectLeaders">
+                                <a ui-sref="member-detail({ id: member.id })">{{ member.name }}</a>{{ member.role }}<span ng-if="!$last">, </span>
+                            </span>
+                        </li>
                         <li><label>Funding bodies:</label> {{ project.fundingBodies }}</li>
                         <li><label>Primary record:</label> {{ project.primary_record }}</li>
                         <li><label>Scope:</label> {{ project.scope }}</li>
@@ -91,6 +93,5 @@
             </span>
         </li>
     </ul>
-    
 
 </div>
