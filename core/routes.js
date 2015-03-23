@@ -95,7 +95,7 @@ angular.module('InstantoClient')
         { state: 'research' },
         { state: 'publications',
           children: [
-              { ref: 'publications',  name: 'Publications'  },
+              { ref: 'publications',  name: 'Scientific publications'  },
               { ref: 'student-works', name: 'Student works' }
           ]
         },

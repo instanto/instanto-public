@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('InstantoClient')
-.controller('ResearchCtrl', ['$scope', 'ResearchLineSrv',
-                    function ($scope,   ResearchLineSrv) {
+.controller('ResearchCtrl', ['$scope', 'CONST', 'ResearchLineSrv',
+                    function ($scope,   CONST,   ResearchLineSrv) {
 
     $scope.general = {
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque natus inventore, alias libero quas aliquam corporis, expedita quis ipsa vitae iure dolore, soluta. Molestias earum omnis reiciendis dolorum vero dolores.'

@@ -3,7 +3,7 @@
     <header>
         <h3 class="member-detail-name">
             {{ researchLine.title }} 
-            <span ng-if="researchLine.finished" class="research-finished">(finished)</span>
+            <em class="research-line-desc" ng-if="researchLine.finished">– Finished <i class="fa fa-check-circle-o research-check"></i></em>
         </h3>
         <input class="form-control member-detail-search" ng-model="searchTxt" placeholder="Search" type="text">
     </header>
@@ -72,8 +72,8 @@
             </div>
         </section>
 
-        <section class="item-common research-detail-section" ng-hide="!partners.length">
-            <h4 class="profile-section-title">Team members</h4>
+        <section class="item-common research-detail-section" ng-hide="!members.length">
+            <h4 class="profile-section-title">Members involved</h4>
             <div class="profile-section-content">
                 <em ng-show="!filteredMembers.length">No results.</em>
                 <ul>
@@ -85,7 +85,7 @@
         </section>
 
         <section class="item-common research-detail-section" ng-hide="!partners.length">
-            <h4 class="profile-section-title">Partners</h4>
+            <h4 class="profile-section-title">Partners involved</h4>
             <div class="profile-section-content">
                 <em ng-show="!filteredPartners.length">No results.</em>
                 <ul>
