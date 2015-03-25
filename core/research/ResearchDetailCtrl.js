@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('InstantoClient')
-.controller('ResearchDetailCtrl', ['$scope', '$filter', '$stateParams', 'MembersSrv', 'NewspaperSrv', 'ResearchLineSrv',
-                          function ($scope,   $filter,   $stateParams,   MembersSrv,   NewspaperSrv,   ResearchLineSrv) {
+.controller('ResearchDetailCtrl', ['$scope', 'CONST', '$filter', '$stateParams', 'MembersSrv', 'NewspaperSrv', 'ResearchLineSrv',
+                          function ($scope,   CONST,   $filter,   $stateParams,   MembersSrv,   NewspaperSrv,   ResearchLineSrv) {
 
     $scope.researchLine = {};
     

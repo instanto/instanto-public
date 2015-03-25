@@ -10,11 +10,14 @@ angular.module('InstantoClient')
                         
     $scope.financedProjects = [];
                         
-    var getAll = function () {
+    var getAll = function (openFirst) {
         ProjectsSrv.getAll()
             .success(function (data) {
                 if (data.financed_projects) {
                     $scope.financedProjects = reshapeFinancedProject(data.financed_projects);
+                    if (openFirst) {
+                        $scope.financedProjects[0].openBox = true;
+                    }
                 }
             })
             .error(function (data) {
@@ -131,12 +134,12 @@ angular.module('InstantoClient')
     };
     
 
-    getAll();
-    
-                        
     // To be able to call a particular project
     if ($stateParams.title) {
         $scope.projectSearch.nameBox = $stateParams.title;
+        getAll(true);
+    } else {
+        getAll(false);
     }
     
 }]);

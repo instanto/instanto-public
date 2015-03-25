@@ -11,11 +11,14 @@ function ($scope,   $stateParams,   CONST,   StudentWorksSrv,   StudentWorksType
                         
     $scope.studentWorks = [];
                         
-    var getAll = function () {
+    var getAll = function (openFirst) {
         StudentWorksSrv.getAll()
             .success(function (data) {
                 if (data.student_works) {
                     $scope.studentWorks = reshapeWorks(data.student_works);
+                    if (openFirst) {
+                        $scope.studentWorks[0].openBox = true;
+                    }
                 }
             })
             .error(function (data) {
@@ -101,12 +104,12 @@ function ($scope,   $stateParams,   CONST,   StudentWorksSrv,   StudentWorksType
     };
     
                         
-    getAll();
-    
-                        
     // To be able to call a particular work
     if ($stateParams.title) {
         $scope.studentWorkSearch.nameBox = $stateParams.title;
+        getAll(true);
+    } else {
+        getAll(false);        
     }
     
 }]);

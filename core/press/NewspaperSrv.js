@@ -1,6 +1,6 @@
 angular.module('InstantoClient')
 .factory('NewspaperSrv', ['$http', 'CONST',
-                function ($http,   CONST) {
+                 function ($http,   CONST) {
 
     var urlBase = CONST.apiUrl + 'newspapers/',
         NewspaperSrv = {};

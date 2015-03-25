@@ -11,11 +11,14 @@ angular.module('InstantoClient')
 
     $scope.publications = [];
                             
-    var getAllPublications = function () {
+    var getAllPublications = function (openFirst) {
         PublicationsSrv.getAll()
             .success(function (data) {
                 if (data.publications) {
                     $scope.publications = reshapePublications(data.publications);
+                    if (openFirst) {
+                        $scope.publications[0].openBox = true;
+                    }
                     getPublicationTypes();
                     changeIdsByNames();
                 }
@@ -124,13 +127,13 @@ angular.module('InstantoClient')
         }
     };
 
-                            
-    getAllPublications();
-
 
     // To be able to call a particular publication
     if ($stateParams.title) {
         $scope.publicationSearch.nameBox = $stateParams.title;
+        getAllPublications(true);
+    } else {
+        getAllPublications(false);        
     }
                             
 }]);
