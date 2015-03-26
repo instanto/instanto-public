@@ -31,6 +31,17 @@ angular.module('InstantoClient')
     var reshapePublications = function (publicationList) {
         angular.forEach(publicationList, function (pub, idx) {
             pub.genuineIdx = idx; // Allows toggling the boxes properly when the results are filtered
+            
+            PublicationsSrv.getSecondaryAuthors(pub.id)
+                .success(function (data) {
+                    if (data.members) {
+                        console.info(data);
+                        pub.secondary_authors = data.members;
+                    }
+                })
+                .error(function (data) {
+                    console.error(data);
+                });
         });
         return publicationList;
     };

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('InstantoClient')
-.controller('ResearchDetailCtrl', ['$scope', 'CONST', '$filter', '$stateParams', 'MembersSrv', 'NewspaperSrv', 'ResearchLineSrv',
-                          function ($scope,   CONST,   $filter,   $stateParams,   MembersSrv,   NewspaperSrv,   ResearchLineSrv) {
+.controller('ResearchDetailCtrl', ['$scope', 'CONST', '$filter', '$stateParams', 'MembersSrv', 'NewspaperSrv', 'ResearchLineSrv', 'PublicationsSrv',
+                          function ($scope,   CONST,   $filter,   $stateParams,   MembersSrv,   NewspaperSrv,   ResearchLineSrv,   PublicationsSrv) {
 
     $scope.researchLine = {};
     
@@ -29,7 +29,17 @@ angular.module('InstantoClient')
             MembersSrv.getById(publication.primary_author)
                 .success(function (data) {
                     if (data) {
-                        publication.main_author = data.last_name + ', ' + data.first_name;
+                        publication.main_author = data.first_name + ' ' + data.last_name;
+                    }
+                })
+                .error(function (data) {
+                    console.error(data);
+                });
+        
+            PublicationsSrv.getSecondaryAuthors(publication.id)
+                .success(function (data) {
+                    if (data.members) {
+                        publication.secondary_authors = data.members;
                     }
                 })
                 .error(function (data) {
@@ -38,7 +48,7 @@ angular.module('InstantoClient')
         });
         return publicationList;
     };
-                              
+
     $scope.publications = [];
 
     var getPublications = function (id) {

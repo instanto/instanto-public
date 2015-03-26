@@ -26,7 +26,8 @@
                     <li ng-repeat="publication in (filteredPublications = (publications | orderBy : 'year' : true | filter : searchTxt))">
                         <a ui-sref="publication-detail({ title: publication.title })">{{ publication.title }}</a>,
                         {{ publication.year }}
-                        (by <a ui-sref="member-detail({ id: publication.primary_author })">{{ publication.main_author }}</a>)
+                        (by <a ui-sref="member-detail({ id: publication.primary_author })">{{ publication.main_author }}</a><span ng-if="publication.secondary_authors" ng-repeat="author in publication.secondary_authors">,
+                            <a ui-sref="member-detail({ id: author.id })">{{ author.first_name + ' ' + author.last_name }}</a></span>)
                     </li>
                 </ul>
             </div>

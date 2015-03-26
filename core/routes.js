@@ -56,13 +56,13 @@ angular.module('InstantoClient')
         })
 
         .state('publications', {
-            url: '/publications/normal',
+            url: '/publications/scientific',
             templateUrl: 'core/publications/publications-view.html',
             controller: 'PublicationsCtrl'
         })
 
         .state('publication-detail', {
-            url: '/publications/normal/{title:string}',
+            url: '/publications/scientific/{title:string}',
             templateUrl: 'core/publications/publications-view.html',
             controller: 'PublicationsCtrl'
         })

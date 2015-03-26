@@ -8,6 +8,11 @@ angular.module('InstantoClient')
     PublicationsSrv.getAll = function () {
         return $http.get(urlBase);        
     };
+                        
+    PublicationsSrv.getSecondaryAuthors = function (id) {
+        return $http.get(urlBase + id + '/secondaryauthors');
+    };
+
     
     var typeUrlBase = CONST.apiUrl + 'publicationtypes/';
 
@@ -21,24 +26,16 @@ angular.module('InstantoClient')
 
     /*
 
-    PublicationsSrv.publicationGetById = function (id) {
-        return $http.get(urlBase + '/' + id);
+    PublicationsSrv.getById = function (id) {
+        return $http.get(urlBase + id);
     };
 
-    PublicationsSrv.publicationGetResearchLines = function (id) {
-        return $http.get(urlBase + '/' + id + '/researchlines');
+    PublicationsSrv.getResearchLines = function (id) {
+        return $http.get(urlBase + id + '/researchlines');
     };
-
-    PublicationsSrv.publicationGetSecondaryAuthors = function (id) {
-        return $http.get(urlBase + '/' + id + '/secondaryauthors');
-    };
-
-    */
-                        
-    /*
 
     publicationTypeFactory.publicationTypeGetPublications = function (id) {
-        return $http.get(urlBase + '/' + id + '/publications');
+        return $http.get(urlBase + id + '/publications');
     };
     
     */

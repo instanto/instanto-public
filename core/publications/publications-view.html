@@ -86,8 +86,9 @@
                         <li ng-show="pub.journal"><b>Editorial:</b> {{ pub.journal }}</li>
                         <li ng-show="pub.edition"><b>Edition:</b> {{ pub.edition }}</li>
                         <li ng-show="pub.publication_type"><b>Type:</b> {{ pub.publication_type }}</li>
-                        <li ng-show="pub.primary_author"><b>Author:</b> 
-                            <a ui-sref="member-detail({ id: pub.primary_author })">{{ pub.author_name }}</a></li>
+                        <li ng-show="pub.primary_author"><b>Authors:</b> 
+                            <a ui-sref="member-detail({ id: pub.primary_author })">{{ pub.author_name }}</a> (Primary)<span ng-if="pub.secondary_authors" ng-repeat="author in pub.secondary_authors">,
+                            <a ui-sref="member-detail({ id: author.id })">{{ author.first_name + ' ' + author.last_name }}</a></span></li>
                         <li ng-show="pub.volume || pub.number || pub.pages">
                             <span ng-show="pub.volume"><b>Volume:</b> {{ pub.volume }}</span>
                             <span ng-show="pub.number"><b>Number:</b> {{ pub.number }}</span>
