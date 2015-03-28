@@ -8,6 +8,10 @@ angular.module('InstantoClient')
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque natus inventore, alias libero quas aliquam corporis, expedita quis ipsa vitae iure dolore, soluta. Molestias earum omnis reiciendis dolorum vero dolores.'
     };
                         
+    $scope.stats = {
+        totalBudget: 0
+    };
+                        
     $scope.financedProjects = [];
                         
     var getAll = function (openFirst) {
@@ -26,11 +30,15 @@ angular.module('InstantoClient')
     };
 
     var reshapeFinancedProject = function (projectList) {
+        var totalBudget = 0; // We'll take advantage of the same loop to calculate it
+        
         angular.forEach(projectList, function (project, idx) {
             project.genuineIdx = idx; // Allows toggling the boxes properly when the results are filtered
             project.ended = $filter('dateMs')(project.ended);
             project.started = $filter('dateMs')(project.started);
+            totalBudget += project.budget;
         });
+        $scope.stats.totalBudget = totalBudget;
         return projectList;
     };
 
