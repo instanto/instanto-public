@@ -130,12 +130,19 @@ angular.module('InstantoClient')
                             
     
     $scope.partners = [];
+                              
+    var reshapePartners = function (partnersList) {
+        angular.forEach(partnersList, function (partner) {
+            partner.logo = partner.logo ? CONST.apiUrl + 'media/' + partner.logo : '';
+        });
+        return partnersList;
+    };
 
     var getMemberPartners = function (id) {
         MembersSrv.getPartners(id)
             .success(function (data) {
                 if (data.partners) {
-                    $scope.partners = data.partners;
+                    $scope.partners = reshapePartners(data.partners);
                 }
             })
             .error(function (data) {

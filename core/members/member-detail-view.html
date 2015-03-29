@@ -103,9 +103,11 @@
             <h4 class="profile-section-title">Partners</h4>
             <div class="profile-section-content">
                 <em ng-show="!filteredPartners.length">No results.</em>
-                <ul>
+                <ul class="partners-logo-list">
                     <li ng-repeat="partner in (filteredPartners = (partners | filter : searchTxt))">
-                        <a ui-sref="partner-detail({ id: partner.id })">{{ partner.name }}</a>
+                        <a ui-sref="partner-detail({ id: partner.id })"
+                           title="{{ partner.name }}" class="partner-photo partner-logo"
+                           style="{{ partner.logo ? 'background-image: url(' + partner.logo + ')' : '' }}"></a>
                     </li>
                 </ul>
             </div>

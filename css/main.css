@@ -608,6 +608,30 @@ select.subnav-input:active {
     color: #5d8862;
 }
 
+.partners-logo-list {
+    list-style: none;
+    padding-left: 0 !important;
+}
+
+.partners-logo-list > li {
+    display: inline-block;
+    margin-right: 16px;
+}
+
+.partner-logo {
+    display: block;
+    width: 120px;
+    height: 80px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 5px solid transparent;
+    box-shadow: 0 1px 4px rgba(0,0,0, .15);
+}
+.partner-logo:hover {
+    box-shadow: 0 1px 4px rgba(0,0,0, .3);
+}
+
 
 /* Media queries */
 
