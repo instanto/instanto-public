@@ -61,20 +61,18 @@
 
     <header>
         <h3 class="member-page-title">Financed projects</h3>
-        <div class="stats stats-2">
-            <ul>
-                <li><label>Total number:</label> {{ financedProjects.length }}</li>
-                <li><label>Total budget:</label> {{ stats.totalBudget }}€</li>
-            </ul>
-        </div>
+        <table class="stats stats-2">
+            <tr><th>Total number</th><td>{{ filteredProjects.length }}</td></tr>
+            <tr><th>Total budget</th><td>{{ stats.totalBudget }}€</td></tr>
+        </table>
     </header>
     
     <hr class="member-page-sep">
     
     <ul class="default-list project-list">
-        <li class="list-group" 
-            ng-repeat="project in financedProjects | filter  : projectSearch.nameBox
-                                                   | orderBy : projectSearch.criteria : projectSearch.reversed">
+        <li class="list-group"
+            ng-repeat="project in (filteredProjects = (financedProjects | filter : projectSearch.nameBox 
+                                                                        | orderBy : projectSearch.criteria : projectSearch.reversed))">
             <span ng-class="{ 'project-list-item-open': project.openBox }"
                      class="list-group-item project-list-item">
                 <header ng-click="toggleProjectBox(project.genuineIdx)" title="See details">

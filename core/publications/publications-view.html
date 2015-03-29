@@ -66,19 +66,17 @@
 
     <header>
         <h3 class="member-page-title">Scientific publications</h3>
-        <div class="stats stats-1">
-            <ul>
-                <li><label>Total number:</label> {{ publications.length }}</li>
-            </ul>
-        </div>
+        <table class="stats stats-1">
+            <tr><th>Total number</th><td>{{ filteredPublications.length }}</td></tr>
+        </table>
     </header>
     
     <hr class="member-page-sep">
 
     <ul class="default-list project-list">
         <li class="list-group" 
-            ng-repeat="pub in publications | filter  : publicationSearch.nameBox
-                                           | orderBy : publicationSearch.criteria : publicationSearch.reversed">
+            ng-repeat="pub in (filteredPublications = (publications | filter : publicationSearch.nameBox 
+                                                                    | orderBy : publicationSearch.criteria : publicationSearch.reversed))">
             <span ng-class="{ 'project-list-item-open': pub.openBox }"
                      class="list-group-item project-list-item">
                 <header ng-click="togglePublicationBox(pub.genuineIdx)" title="See details">

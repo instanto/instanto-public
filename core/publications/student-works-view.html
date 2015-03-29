@@ -61,19 +61,17 @@
 
     <header>
         <h3 class="member-page-title">Student works</h3>
-        <div class="stats stats-1">
-            <ul>
-                <li><label>Total number:</label> {{ studentWorks.length }}</li>
-            </ul>
-        </div>
+        <table class="stats stats-1">
+            <tr><th>Total number</th><td>{{ filteredStudentWorks.length }}</td></tr>
+        </table>
     </header>
     
     <hr class="member-page-sep">
     
     <ul class="default-list project-list">
         <li class="list-group" 
-            ng-repeat="work in studentWorks | filter  : studentWorkSearch.nameBox
-                                            | orderBy : studentWorkSearch.criteria : studentWorkSearch.reversed">
+            ng-repeat="work in (filteredStudentWorks = (studentWorks | filter : studentWorkSearch.nameBox 
+                                                                     | orderBy : studentWorkSearch.criteria : studentWorkSearch.reversed))">
             <span ng-class="{ 'project-list-item-open': work.openBox }"
                      class="list-group-item project-list-item">
                 <header ng-click="toggleWorkBox(work.genuineIdx)" title="See details">

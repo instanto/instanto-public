@@ -553,15 +553,16 @@ select.subnav-input:active {
     float: right;
     position: relative;
 }
-.stats-1 { top: 17px; }
-.stats-2 { top: 8px; }
 
-.stats > ul {
-    list-style: none;
+.stats-1 { top: 14px; }
+.stats-2 { top: 3px; }
+
+.stats tr {
+    line-height: 20px;
 }
 
-.stats li {
-    line-height: 14px;
+.stats td {
+    padding-left: 16px;
     text-align: right;
 }
 

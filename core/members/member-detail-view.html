@@ -51,7 +51,7 @@
             <div class="profile-section-content">
                 <em ng-show="!filteredPublications.length">No results.</em>
                 <ul>
-                    <li ng-repeat="publication in (filteredPublications = (publications | orderBy : 'year' : true | filter : searchTxt))">
+                    <li ng-repeat="publication in (filteredPublications = (publications | filter : searchTxt | orderBy : 'year' : true))">
                         <a ui-sref="publication-detail({ title: publication.title })">{{ publication.title }}</a>,
                         {{ publication.year + publication.edition }} <em class="publication-role">{{ publication.role }}</em>
                     </li>
@@ -64,7 +64,7 @@
             <div class="profile-section-content">
                 <em ng-show="!filteredStudentWorks.length">No results.</em>
                 <ul>
-                    <li ng-repeat="studentWork in (filteredStudentWorks = (studentWorks | orderBy : 'year' : true | filter : searchTxt))">
+                    <li ng-repeat="studentWork in (filteredStudentWorks = (studentWorks | filter : searchTxt | orderBy : 'year' : true))">
                         <a ui-sref="student-work-detail({ title: studentWork.title })">{{ studentWork.title }}</a>,
                         {{ studentWork.year + ' at '  + studentWork.school }}
                     </li>
@@ -77,7 +77,7 @@
             <div class="profile-section-content">
                 <em ng-show="!filteredFinancedProjects.length">No results.</em>
                 <ul>
-                    <li ng-repeat="financedProject in (filteredFinancedProjects = (financedProjects | orderBy : 'started' : true | filter : searchTxt))">
+                    <li ng-repeat="financedProject in (filteredFinancedProjects = (financedProjects | filter : searchTxt | orderBy : 'started' : true))">
                         <a ui-sref="project-detail({ title: financedProject.title })">{{ financedProject.title }}</a>
                         {{ financedProject.dateRange }} <em class="publication-role">{{ financedProject.role }}</em>
                     </li>
