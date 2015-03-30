@@ -53,7 +53,8 @@ angular.module('InstantoClient')
             .success(function (data) {
                 if (data.funding_bodies) {
                     angular.forEach(data.funding_bodies, function (body) {
-                        fundingBodies = fundingBodies.concat([ body.name + ' (' + body.scope + ')' ]);
+                        var record = body.financed_project_record ? ' (' + body.financed_project_record + ')' : '';
+                        fundingBodies = fundingBodies.concat([ body.name + record ]);
                     });
                     $scope.financedProjects[i].fundingBodies = fundingBodies.join(', ');
                 }
