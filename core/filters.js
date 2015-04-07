@@ -76,7 +76,7 @@ angular.module('InstantoClient')
     .filter('externalUrl', function () {
         return function (web) {
             return web.indexOf('http://') !== 0 
-                || web.indexOf('https://') !== 0 ? 'http://' + web : web;
+                && web.indexOf('https://') !== 0 ? 'http://' + web : web;
         };
     })
 

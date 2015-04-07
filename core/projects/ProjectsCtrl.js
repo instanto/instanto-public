@@ -41,7 +41,7 @@ angular.module('InstantoClient')
         ProjectsSrv.getPrimaryFundingBody($scope.financedProjects[i].primary_funding_body)
             .success(function (data) {
                 if (data) {
-                    fundingBodies = fundingBodies.concat([ data.name + ' (' + data.scope + ')' ]);
+                    fundingBodies = fundingBodies.concat([ data.name + ' (' + $scope.financedProjects[i].primary_record + ')' ]);
                     $scope.financedProjects[i].fundingBodies = fundingBodies.join(', ');
                 }
             })
